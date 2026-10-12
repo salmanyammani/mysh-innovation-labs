@@ -1,0 +1,251 @@
+/* Tailwind V4.0 */
+@import "tailwindcss";
+
+/*
+  Fonts are loaded through `next/font` in app/layout.tsx (self-hosted, no
+  render-blocking request to Google). Each family is exposed there as a
+  `--ff-*` CSS variable, which the `@theme` block below maps onto Tailwind's
+  `font-*` utilities.
+*/
+
+/* Dark-Mode Toggle manually */
+@variant dark (&:where(.dark, .dark *));
+
+/* THEME */
+@theme {
+  /* Fonts */
+  --font-helvetica: var(--ff-helvetica), sans-serif;
+  --font-space: var(--ff-space), sans-serif;
+  --font-jakarta: var(--ff-jakarta), sans-serif;
+  --font-inter: var(--ff-inter), sans-serif;
+  --font-poppins: var(--ff-poppins), sans-serif;
+  --font-montserrat: var(--ff-montserrat), sans-serif;
+  --font-playfair: var(--ff-playfair), serif;
+  --font-prata: var(--ff-prata), serif;
+  --font-bebas: var(--ff-bebas), sans-serif;
+  --font-cookie: var(--ff-cookie), cursive;
+
+  /* Colors */
+  --color-prime-accent: #dfff3b;
+  --color-prime-white: #fff4e9;
+  --color-prime-orange: #ff854b;
+  --color-prime-dark: #121212;
+  --color-sec-dark: #0b0b0b;
+
+  --drop-shadow-3xl: 0 35px 35px rgba(0, 0, 0, 0.25);
+
+  /* Animations Extension */
+  --animate-wiggle: wiggle 2s ease-out infinite;
+  @keyframes wiggle {
+    0%,
+    100% {
+      transform: rotate(-3deg);
+    }
+    50% {
+      transform: rotate(3deg);
+    }
+  }
+
+  --animate-border: border 5s linear infinite;
+  @keyframes border {
+    0% {
+      border-color: rgb(56, 189, 248); /* Tailwind CSS sky-400 */
+    }
+    50% {
+      border-color: rgb(236, 72, 153);
+    }
+    75% {
+      border-color: #adfe02;
+    }
+    100% {
+      border-color: rgb(56, 189, 248);
+    }
+  }
+
+  --animate-scroll: scroll 40s linear infinite;
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+}
+
+/* Surface tokens — flipped by the `.dark` class on <html> */
+:root {
+  --background: #fff4e9;
+  --foreground: #121212;
+}
+
+.dark {
+  --background: #121212;
+  --foreground: #fff4e9;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* FONTS */
+.helvetica-font {
+  font-family: var(--font-helvetica) !important;
+}
+
+.space-font {
+  font-family: var(--font-space) !important;
+}
+
+* {
+  font-family: var(--ff-helvetica), var(--ff-jakarta), var(--ff-inter),
+    var(--ff-poppins), sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-space);
+}
+
+.playfair-display {
+  font-family: var(--font-playfair);
+  font-weight: 400;
+  /* font-style: normal; */
+}
+
+.cookie-font {
+  font-family: var(--font-cookie);
+  font-weight: 400;
+  font-style: normal;
+}
+
+.montserrat {
+  font-family: var(--font-montserrat);
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+a.active hr {
+  display: block;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* 🔷  Marquee Effect*/
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-1040%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  animation: marquee 150s linear infinite;
+  animation-play-state: var(--marquee-play-state, running);
+}
+
+.color {
+  background-color: #ffebf5;
+  border-color: #c586a5;
+  color: #cc1379;
+}
+
+/* Git-Hub Black:  #0d1117 */
+
+/* CUSTOM_UTIITIES */
+@utility centered-row {
+  @apply flex items-center;
+}
+
+@utility mirror-x {
+  @apply transform scale-x-[-1];
+}
+
+@layer components {
+  .btn-hover {
+    @apply hover:bg-transparent hover:border hover:border-zinc-600 hover:transition-all;
+  }
+
+  .heading-2 {
+    @apply text-6xl lg:text-9xl uppercase leading-tight mb-12;
+  }
+
+  .col {
+    @apply flex flex-col;
+  }
+
+  .transition2 {
+    @apply transition-all duration-300 cursor-pointer ease-out;
+  }
+
+  .glass {
+    @apply bg-[#0A0A0A]/80  border border-white/10;
+  }
+
+  .card-hover {
+    @apply hover:-translate-y-2 transition-all duration-300 cursor-pointer ease-in;
+  }
+
+  .black-text {
+    @apply text-zinc-500/90;
+  }
+
+  .line-bottom {
+    @apply border-b border-b-zinc-500/40;
+  }
+
+  .center-item {
+    @apply centered-row justify-center;
+  }
+
+  .grad-text {
+    @apply text-transparent bg-gradient-to-tr  bg-clip-text;
+  }
+
+  .grad1 {
+    @apply text-transparent bg-gradient-to-tr bg-clip-text from-indigo-100 to-indigo-400;
+  }
+
+  .link-hover {
+    @apply hover:font-bold hover:text-zinc-800 transition-all duration-300 ease-in-out hover:-translate-y-1;
+  }
+}
+
+/* If Needed try: Small-Screen SpecialCase Fix */
+@media (max-width: 380px) {
+  .test {
+    /* background: salmon; */
+    font-size: 75px;
+  }
+
+  .something {
+    /* background: chocolate; */
+    font-size: 16px;
+    width: 340px;
+    position: absolute;
+    bottom: -380px;
+    left: 5px;
+    gap: 10px;
+  }
+}
+
+/* Full HD Layout Tweaks: special-case */
+@media (min-width: 1920px) {
+  .hero-img {
+    /* background-color: #fff; */
+    width: 1024px;
+  }
+}
