@@ -4,7 +4,7 @@ import { navigateLinks, socialLinks } from "../assets/data"
 const Footer = () => {
   return (
     <footer className="bg-zinc-900 text-white mt-4 mb-12">
-      <div className="container mx-auto pb-6 lg:px-4">
+      <div className="container mx-auto px-6 lg:px-4">
         {/* TOP : CTA  */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center md-16 gap-8">
            <div>
@@ -17,7 +17,7 @@ const Footer = () => {
             </h2>
             </div>
             {/* CTA BTN  */}
-            <button className="flex items-center gap-3 bg-white text-zinc-900 px-6 py-3 rounded-full font-bold transition-transform hover:scale-105">
+            <button className="flex items-center gap-3 bg-white text-zinc-900 px-6 py-3 rounded-full font-bold transition-transform hover:scale-105 mb-4">
               Book a Call
               <div className="size-8 bg-zinc-900 rounded-full center-item">
                 <span className="text-white text-lg"><ArrowRight className="text-white size-4"/></span>
@@ -68,7 +68,7 @@ const Footer = () => {
           </div>
         </div>
         {/* BOTTOM: BRANDING  */}
-        <div className="flex justify-between items-end">
+        <div className="flex justify-between items-end ">
           <h1 className="text-7xl md:text-[10rem] font-bold tracking-tighter leading-none relative cursor-pointer">MYSHLABS <sup className="font-light text-5xl absolute">TM</sup></h1>
           <button onClick={()=>window.scrollTo({top:0, behavior:"smooth"})} className="mb-4 size-1 rounded-full border border-zinc-700 flex items-center justify-center hover:bg-zinc-800 transition-colors">
             <span className="text-xl"><ArrowUp className="size-5"/></span>
